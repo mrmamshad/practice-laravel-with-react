@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-function Userinfo({ user, setusers }) {
+export function Userinfo({ user, setusers }) {
   const [isEditing, setIsEditing] = useState(false);
   const [Username, setusername] = useState(user.name);
   const [Useremail, setuseremail] = useState(user.email);
@@ -9,7 +9,7 @@ function Userinfo({ user, setusers }) {
   return (
     <div key={user.id}>
       <button
-        className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg"
+        className="bg-gray-800 hover:bg-gray-700 mr-5 text-white font-bold py-2 px-4  mt-2 border border-solid border-#F5FEFD rounded-lg"
         onClick={() => {
           setIsEditing((currentstate) => !currentstate);
         }}
@@ -19,39 +19,14 @@ function Userinfo({ user, setusers }) {
       <button
         className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg"
         onClick={() => {
-          setusers((currentuserstate) =>
-            currentuserstate.filter((currentuser) => currentuser.id !== user.id)
-          );
+          setIsEditing((currentstate) => !currentstate);
         }}
       >
         delete
       </button>
-
-      {isEditing && (
-        <button
-          className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg"
-          onClick={() => {
-            setusers((currentuserstate) =>
-              currentuserstate.map((currentuser) =>
-                currentuser.id === user.id
-                  ? { ...currentuser, name: Username, email: Useremail }
-                  : currentuser
-              )
-            );
-            setIsEditing(false);
-          }}
-        >
-          save
-        </button>
-      )}
       <br />
-      <b>ID:</b>
-      <span className="text-red-500 text-xl font-semibold hover:underline">
-        {user.id}
-      </span>
-      <br />
+      <button onClick={() => console.log(user)}>save</button>
       <b>Username:</b>
-    
       {isEditing ? (
         <input
           name="username"
@@ -76,7 +51,7 @@ function Userinfo({ user, setusers }) {
           className="mb-5"
           value={Useremail}
           onChange={(e) => {
-            setuseremail(e.target.value);
+            setusername(e.target.value);
           }}
         />
       ) : (
@@ -87,6 +62,3 @@ function Userinfo({ user, setusers }) {
     </div>
   );
 }
-
-
-export default Userinfo;
