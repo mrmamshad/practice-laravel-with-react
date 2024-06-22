@@ -5,5 +5,8 @@ import "./index.css";
 import User from "./components/User";
 import Newcomponent from "./components/Newcomponent";
 import Post from "./components/Post";
+import List from "./components/List";
+import App from "./components/App";
 
-ReactDOM.createRoot(document.getElementById("root")).render(<Post />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  
